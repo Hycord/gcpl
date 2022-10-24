@@ -24,13 +24,13 @@ module.exports = [
             package?.version ? ` (v${semver.coerce(package?.version)})` : ``
           }`,
           choices: [
-            "prepatch",
+            // "prepatch",
             "patch",
-            "preminor",
+            // "preminor",
             "minor",
-            "premajor",
+            // "premajor",
             "major",
-            "prerelease",
+            // "prerelease",
           ],
         });
         prompts.push({
