@@ -15,6 +15,11 @@ module.exports = [
     message: "What did you fix?",
   },
   {
+    name: "Config Change",
+    emoji: "🖊",
+    message: "Which key on which config did you change?",
+  },
+  {
     name: "Add Feature",
     emoji: "🔨",
     message: "What did you add?",
