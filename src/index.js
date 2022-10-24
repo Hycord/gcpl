@@ -21,7 +21,6 @@ let finished = async () => {
   execSync(`npm version ${ret.version}`);
   execSync(`git stash pop`);
   execSync(`git add .`);
-
   execSync(
     `git commit${ret.signed ? " -S" : ""} -m "${
       ret?.title || semver.coerce(existingConfig?.version)
