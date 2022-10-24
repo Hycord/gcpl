@@ -51,7 +51,10 @@ module.exports = [
       ret.signed = signed ?? ret.signed ?? true;
 
       let details = await getDetails(type);
-      if (details?.done) return finished();
+      if (details?.done) {
+        ret.title = details?.message ?? ''
+        return finished();
+      }
       ret.commitRow.push(
         `${details.emoji} (${details.name}) > ${details.message}`
       );

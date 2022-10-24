@@ -9,17 +9,17 @@ const semver = require("semver");
 
 const existingConfig = require(__dirname + "/../package.json");
 
-let ret = { commitRow: [], version: "patch", signed: true };
+let ret = { commitRow: [], version: "patch", signed: true, title: "" };
 
 // return logger.data(semver.inc(semver.coerce("0.0.2"), ret.version));
 
 let finished = async () => {
   exec(`git add .`);
   exec(
-    `git commit${ret.signed ? " -S" : ""} -m "${semver.inc(
-      semver.coerce(existingConfig?.version),
-      ret.version
-    )}" -m "    - ${ret.commitRow.join("\n    - ")}"`
+    `git commit${ret.signed ? " -S" : ""} -m "${
+      ret?.title ||
+      semver.inc(semver.coerce(existingConfig?.version), ret.version)
+    }" -m "    - ${ret.commitRow.join("\n    - ")}"`
   );
   // exec(`git push`);
   // exec(`npm version ${ret.version}`);
