@@ -3,15 +3,16 @@ module.exports = [
   {
     name: "Done",
     emoji: "🏁",
-    message: "Do you want to set a title for this release?",
+    message: "Do you want to set a title for this release? (Enter for none)",
     done: true,
+    type: "confirm",
   },
   {
     separator: true,
   },
   {
     name: "Bug Fix",
-    emoji: "🐛",
+    emoji: "✨",
     message: "What did you fix?",
   },
   {
@@ -26,7 +27,22 @@ module.exports = [
   },
   {
     name: "Remove Feature",
-    emoji: "💣",
+    emoji: "🔥",
     message: "What did you remove?",
   },
+  {
+    name: "Chore",
+    emoji: "🧹",
+    message: "What did you update?",
+  },
+  {
+    name: "Breaking Change",
+    emoji: "💣",
+    message: "What is affected by this change?",
+  },
 ];
+// hammer- Feature added
+// sparkles - Bug doesn't happen
+// broom - Chore/Boring
+// fire - Feature removed
+// bomb/boom - Breaking Change

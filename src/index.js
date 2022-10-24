@@ -6,19 +6,25 @@ const log = require("@ignhycord/logger");
 const logger = new log.default();
 const { exec } = require("child_process");
 const semver = require("semver");
+const fs = require("fs");
 
-const existingConfig = require(__dirname + "/../package.json");
+const existingConfig = fs.existsSync(__dirname + "/../package.json")
+  ? require(__dirname + "/../package.json")
+  : null;
 
 let ret = { commitRow: [], version: "patch", signed: true, title: "" };
 
 // return logger.data(semver.inc(semver.coerce("0.0.2"), ret.version));
 
 let finished = async () => {
+  exec(`git stash`);
+  exec(`npm version ${ret.version}`);
+  exec(`git stash pop`);
   exec(`git add .`);
+
   exec(
     `git commit${ret.signed ? " -S" : ""} -m "${
-      ret?.title ||
-      semver.inc(semver.coerce(existingConfig?.version), ret.version)
+      ret?.title || semver.coerce(existingConfig?.version)
     }" -m "    - ${ret.commitRow.join("\n    - ")}"`
   );
   // exec(`git push`);

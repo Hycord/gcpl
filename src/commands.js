@@ -7,6 +7,8 @@ const package = fs.existsSync(__dirname + "/../package.json")
 
 const commitTypes = require("./commitTypes");
 const getDetails = require("./getDetails");
+const semver = require("semver");
+
 
 module.exports = [
   {
@@ -18,7 +20,9 @@ module.exports = [
         prompts.push({
           type: "list",
           name: "version",
-          message: "What kind of commit is this?",
+          message: `What kind of commit is this?${
+            package?.version ? ` (v${semver.coerce(package?.version)})` : ``
+          }`,
           choices: [
             "prepatch",
             "patch",
@@ -52,7 +56,7 @@ module.exports = [
 
       let details = await getDetails(type);
       if (details?.done) {
-        ret.title = details?.message ?? ''
+        ret.title = details?.message ?? "";
         return finished();
       }
       ret.commitRow.push(
