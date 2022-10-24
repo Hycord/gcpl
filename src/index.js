@@ -21,12 +21,12 @@ let finished = async () => {
   exec(`npm version ${ret.version}`);
   exec(`git stash pop`);
   exec(`git add .`);
-
+  
   exec(
     `git commit${ret.signed ? " -S" : ""} -m "${
       ret?.title || semver.coerce(existingConfig?.version)
     }" -m "    - ${ret.commitRow.join("\n    - ")}"`
-  );
+    );
   // exec(`git push`);
   // exec(`npm version ${ret.version}`);
 };

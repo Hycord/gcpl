@@ -8,7 +8,8 @@
   ],
   "main": "src/index.js",
   "bin": {
-    "gcpl": "src/index.js"
+    "gcpl": "src/index.js",
+    "cm": "src/index.js"
   },
   "scripts": {
     "start": "node src/"
