@@ -3,7 +3,7 @@ module.exports = [
   {
     name: "Done",
     emoji: "🏁",
-    message: "Done adding new changes?",
+    message: "Do you want to set a title for this release?",
     done: true,
   },
   {
