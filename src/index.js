@@ -4,7 +4,7 @@ const commitTypes = require("./commitTypes");
 const commands = require("./commands");
 const log = require("@ignhycord/logger");
 const logger = new log.default();
-const { exec, execSync } = require("child_process");
+const { execSync } = require("child_process");
 const semver = require("semver");
 const fs = require("fs");
 
