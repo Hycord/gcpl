@@ -1,0 +1,40 @@
+{
+  "name": "gcpl",
+  "version": "0.7.2",
+  "description": "Write more detailed git commits in less time",
+  "author": "Hycord <hycord@hycordia.com> (https://hycord.hycordia.com/)",
+  "maintainers": [
+    "Hycord <hycord@hycordia.com> (https://hycord.hycordia.com/)"
+  ],
+  "main": "src/index.js",
+  "bin": {
+    "gcpl": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hycord/gcpl.git "
+  },
+  "keywords": [],
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/Hycord/gcpl/issues"
+  },
+  "homepage": "https://github.com/Hycord/gcpl#readme",
+  "dependencies": {
+    "@ignhycord/logger": "^4.2.0",
+    "fs": "^0.0.1-security",
+    "inquirer": "^8.2.5",
+    "semver": "^7.3.8",
+    "update-notifier": "^6.0.2"
+  },
+  "devDependencies": {
+    "auto": "^10.37.6"
+  }
+}
