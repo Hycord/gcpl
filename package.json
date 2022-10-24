@@ -20,7 +20,8 @@
   "keywords": [],
   "license": "ISC",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "bugs": {
     "url": "https://github.com/Hycord/gcpl/issues"

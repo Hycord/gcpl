@@ -1,24 +1,30 @@
-name: Publish package to GitHub Packages
+name: Auto publish and create release
 on:
   push:
     branches:
-      - "main"
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
 jobs:
-  build:
+  autorelease:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     steps:
-      - uses: actions/checkout@v3
-      # Setup .npmrc file to publish to GitHub Packages
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v2
+      - run: git fetch --unshallow --tags
+      - name: Setup node
+        uses: actions/setup-node@v1
         with:
           node-version: "16.x"
-          registry-url: "https://npm.pkg.github.com"
-          # Defaults to the user or organization that owns the workflow file
-          scope: "@hycord"
-      - run: npm ci
-      - run: npm publish
+          registry-url: "https://registry.npmjs.org"
+      - name: Auto release
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm ci
+          npx auto shipit
