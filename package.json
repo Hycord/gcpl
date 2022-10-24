@@ -1,6 +1,6 @@
 {
   "name": "gcpl",
-  "version": "0.8.1",
+  "version": "0.10.0",
   "description": "Write more detailed git commits in less time",
   "author": "Hycord <hycord@hycordia.com> (https://hycord.hycordia.com/)",
   "maintainers": [
@@ -8,7 +8,8 @@
   ],
   "main": "src/index.js",
   "bin": {
-    "gcpl": "src/index.js"
+    "gcpl": "src/index.js",
+    "cm": "src/index.js"
   },
   "scripts": {
     "start": "node src/"
